@@ -11,6 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', 'BarangController@index');
+Route::get('/tambah', 'BarangController@create');
+Route::post('/simpan', 'BarangController@store');
+Route::get('/{id}/ubah', 'BarangController@edit');
+Route::post('/perbarui', 'BarangController@update');
+Route::get('/hapus/{id}', 'BarangController@destroy');
