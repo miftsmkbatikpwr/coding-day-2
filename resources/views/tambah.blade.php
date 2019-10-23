@@ -12,54 +12,54 @@
                 <label for="kode" class="col-sm-2 col-form-label">Kode</label>
                 <div class="col-sm-8">
                     <input type="kode" class="form-control" id="kode" name="kode" value="{{ old('kode') }}">
-                    @if ($errors->has('kode'))
+                    <!-- @if ($errors->has('kode'))
                         <div class="error">{{ $errors->first('kode') }}</div>
-                    @endif
+                    @endif -->
                 </div>
             </div>
             <div class="form-group row">
                 <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="nama" name="nama" value="{{ old('nama') }}">
-                    @if ($errors->has('nama'))
+                    <!-- @if ($errors->has('nama'))
                         <div class="error">{{ $errors->first('nama') }}</div>
-                    @endif
+                    @endif -->
                 </div>
             </div>
             <div class="form-group row">
                 <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
                 <div class="col-sm-10">
                 <textarea class="form-control" id="deskripsi" name="deskripsi">{{ old('deskripsi') }}</textarea>
-                @if ($errors->has('deskripsi'))
+                <!-- @if ($errors->has('deskripsi'))
                     <div class="error">{{ $errors->first('deskripsi') }}</div>
-                @endif
+                @endif -->
                 </div>
             </div>
             <div class="form-group row">
                 <label for="stok" class="col-sm-2 col-form-label">Stok</label>
                 <div class="col-sm-6">
                     <input type="text" class="form-control" id="stok" name="stok" value="{{ old('stok') }}">
-                    @if ($errors->has('stok'))
+                    <!-- @if ($errors->has('stok'))
                         <div class="error">{{ $errors->first('stok') }}</div>
-                    @endif
+                    @endif -->
                 </div>
             </div>
             <div class="form-group row">
                 <label for="harga" class="col-sm-2 col-form-label">Harga</label>
                 <div class="col-sm-7">
                     <input type="text" class="form-control" id="harga" name="harga" value="{{ old('harga') }}">
-                    @if ($errors->has('harga'))
+                    <!-- @if ($errors->has('harga'))
                         <div class="error">{{ $errors->first('harga') }}</div>
-                    @endif
+                    @endif -->
                 </div>
             </div>
             <div class="form-group row">
                 <label for="berat" class="col-sm-2 col-form-label">Berat</label>
                 <div class="col-sm-3">
                     <input type="text" class="form-control" id="berat" name="berat" value="{{ old('berat') }}">
-                    @if ($errors->has('berat'))
+                    <!-- @if ($errors->has('berat'))
                         <div class="error">{{ $errors->first('berat') }}</div>
-                    @endif
+                    @endif -->
                 </div>
                 <label for="berat" class="col-sm-2  col-form-label">gram</label>
             </div>

@@ -19,6 +19,7 @@ class BarangController extends Controller
         // return view('home');
         $barang = Barang::all();
         return view('home',compact('barang'));
+        // return view('home',['barang' => $barang]);
     }
 
     /**
@@ -39,23 +40,23 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        $messages = [
-            'required' => ':attribute tidak boleh kosong.',
-            'numeric' => ':attribute harus diisi angka.',
-        ];
-        $validator = Validator::make($request->all(), [
-            'kode' => 'required|max:8',
-            'nama' => 'required|max:50',
-            'deskripsi' => 'required',
-            'stok' => 'required|numeric',
-            'harga' => 'required|numeric',
-            'berat' => 'required|numeric'
-        ], $messages);
-        if ($validator->fails()) {
-            return redirect('/tambah')
-                        ->withErrors($validator)
-                        ->withInput();
-        }
+        // $messages = [
+        //     'required' => ':attribute tidak boleh kosong.',
+        //     'numeric' => ':attribute harus diisi angka.',
+        // ];
+        // $validator = Validator::make($request->all(), [
+        //     'kode' => 'required|max:8',
+        //     'nama' => 'required|max:50',
+        //     'deskripsi' => 'required',
+        //     'stok' => 'required|numeric',
+        //     'harga' => 'required|numeric',
+        //     'berat' => 'required|numeric'
+        // ], $messages);
+        // if ($validator->fails()) {
+        //     return redirect('/tambah')
+        //                 ->withErrors($validator)
+        //                 ->withInput();
+        // }
         Barang::create($request->all());
         return redirect('/')->with('status','Data Berhasil Ditambahkan');
     }
@@ -97,23 +98,23 @@ class BarangController extends Controller
     public function update(Request $request, $id)
     {
         // return $request;
-        $messages = [
-            'required' => ':attribute tidak boleh kosong.',
-            'numeric' => ':attribute harus diisi angka.',
-        ];
-        $validator = Validator::make($request->all(), [
-            'kode' => 'required|max:8',
-            'nama' => 'required|max:50',
-            'deskripsi' => 'required',
-            'stok' => 'required|numeric',
-            'harga' => 'required|numeric',
-            'berat' => 'required|numeric'
-        ], $messages);
-        if ($validator->fails()) {
-            return redirect('/'.$id.'/ubah')
-                        ->withErrors($validator)
-                        ->withInput();
-        }
+        // $messages = [
+        //     'required' => ':attribute tidak boleh kosong.',
+        //     'numeric' => ':attribute harus diisi angka.',
+        // ];
+        // $validator = Validator::make($request->all(), [
+        //     'kode' => 'required|max:8',
+        //     'nama' => 'required|max:50',
+        //     'deskripsi' => 'required',
+        //     'stok' => 'required|numeric',
+        //     'harga' => 'required|numeric',
+        //     'berat' => 'required|numeric'
+        // ], $messages);
+        // if ($validator->fails()) {
+        //     return redirect('/'.$id.'/ubah')
+        //                 ->withErrors($validator)
+        //                 ->withInput();
+        // }
 
         $affectedRows = Barang::where('id', $id)
             ->update(
