@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>@yield('judul')</title>
+	<title>CodingDayTest - @yield('judul')</title>
+    <link rel="icon" href="{{ asset('/gambar/logo.png') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap.min.css') }}">
 	<script type="text/javascript" src="{{ asset('/js/bootstrap.min.js') }}"></script>
     <style type="text/css">
