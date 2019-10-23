@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Barang;
 
 class BarangController extends Controller
@@ -27,7 +28,7 @@ class BarangController extends Controller
      */
     public function create()
     {
-        //
+        return view('tambah');
     }
 
     /**
@@ -38,7 +39,25 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $messages = [
+            'required' => ':attribute tidak boleh kosong.',
+            'numeric' => ':attribute harus diisi angka.',
+        ];
+        $validator = Validator::make($request->all(), [
+            'kode' => 'required|max:8',
+            'nama' => 'required|max:50',
+            'deskripsi' => 'required',
+            'stok' => 'required|numeric',
+            'harga' => 'required|numeric',
+            'berat' => 'required|numeric'
+        ], $messages);
+        if ($validator->fails()) {
+            return redirect('/tambah')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        Barang::create($request->all());
+        return redirect('/')->with('status','Data Berhasil Ditambahkan');
     }
 
     /**
@@ -61,7 +80,11 @@ class BarangController extends Controller
     public function edit($id)
     {
         //
-        echo $id;
+        // App\Flight::where('number', 'FR 900')->first();
+        $barang = Barang::where('id',$id)->first();
+        return view('ubah',compact('barang'));
+        // return $barang;
+        // echo $id;
     }
 
     /**
@@ -73,7 +96,40 @@ class BarangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // return $request;
+        $messages = [
+            'required' => ':attribute tidak boleh kosong.',
+            'numeric' => ':attribute harus diisi angka.',
+        ];
+        $validator = Validator::make($request->all(), [
+            'kode' => 'required|max:8',
+            'nama' => 'required|max:50',
+            'deskripsi' => 'required',
+            'stok' => 'required|numeric',
+            'harga' => 'required|numeric',
+            'berat' => 'required|numeric'
+        ], $messages);
+        if ($validator->fails()) {
+            return redirect('/'.$id.'/ubah')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        $affectedRows = Barang::where('id', $id)
+            ->update(
+                [
+                    'kode' => $request->kode,
+                    'nama' => $request->nama,
+                    'deskripsi' => $request->deskripsi,
+                    'stok' => $request->stok,
+                    'harga' => $request->harga,
+                    'berat' => $request->berat
+                ]
+            );
+        if ($affectedRows) {
+            return redirect('/')->with('status','Data Berhasil Diubah');
+        }
+        return redirect('/')->with('status','Tidak ada perubahan data');
     }
 
     /**
@@ -84,6 +140,7 @@ class BarangController extends Controller
      */
     public function destroy($id)
     {
-        echo $id;
+        Barang::destroy($id);
+        return redirect('/')->with('status','Data Berhasil Dihapus');
     }
 }

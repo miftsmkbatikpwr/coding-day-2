@@ -18,5 +18,5 @@ Route::get('/', 'BarangController@index'); // view tabel
 Route::get('/tambah', 'BarangController@create'); //view input
 Route::post('/simpan', 'BarangController@store'); 
 Route::get('/{id}/ubah', 'BarangController@edit');
-Route::post('/perbarui', 'BarangController@update');
+Route::post('/perbarui/{id}', 'BarangController@update');
 Route::get('/hapus/{id}', 'BarangController@destroy');
